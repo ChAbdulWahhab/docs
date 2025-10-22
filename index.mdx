@@ -1,97 +1,285 @@
 ---
-title: "Introduction"
-description: "Welcome to the new home for your documentation"
+
+title: "JavaScript Basics"
+description: "A concise, hands-on guide to learning JavaScript — syntax, core concepts, and practical exercises."
+-----------------------------------------------------------------------------------------------------------------
+
+# Introduction
+
+Welcome to **JavaScript Basics** — this documentation teaches modern JavaScript from the ground up with short explanations, runnable examples, and small exercises so learners can practice as they go.
+
+## Getting started
+
+Follow these quick steps to start learning locally:
+
+<Card title="Start here" icon="rocket" href="/quickstart" horizontal>
+  1. Install Node (v18/v20 recommended) or use the browser console.
+  2. Open a code editor (VS Code recommended).
+  3. Try the examples in the browser console or a live REPL like CodeSandbox.
+</Card>
+
+<Columns cols={2}>
+  <Card title="Setup (optional)" icon="desktop" href="/quickstart/setup">
+    Install Node.js and VS Code for local practice and small projects.
+  </Card>
+  <Card title="Playground" icon="flask" href="https://codesandbox.io">
+    Use an online editor to run code instantly — no install required.
+  </Card>
+</Columns>
+
 ---
 
-## Setting up
+## Roadmap
 
-Get your documentation site up and running in minutes.
+* Basics: syntax, variables, types
+* Control flow and functions
+* Objects & arrays
+* DOM & events (browser)
+* Asynchronous JavaScript (callbacks, promises, async/await)
+* ES6+ features and modules
+* Small projects & exercises
 
-<Card
-  title="Start here"
-  icon="rocket"
-  href="/quickstart"
-  horizontal
->
-  Follow our three step quickstart guide.
+---
+
+## 1. JavaScript Syntax & Values
+
+### What is JavaScript?
+
+JavaScript is a dynamic programming language used for web pages (browser), servers (Node.js), and more.
+
+### First example (console):
+
+```js
+// Hello world
+console.log('Hello, JavaScript!');
+```
+
+<Card title="Key concepts" icon="lightbulb" href="/basics/key-concepts">
+  - Statements & expressions
+  - Comments
+  - Semicolons (optional but consistent style helps)
 </Card>
 
-## Make it yours
+### Variables
 
-Design a docs site that looks great and empowers your users.
+```js
+let name = 'Ali';       // changeable
+const pi = 3.14159;     // constant
+var oldStyle = 10;      // avoid: function-scoped
+```
 
-<Columns cols={2}>
-  <Card
-    title="Edit locally"
-    icon="pen-to-square"
-    href="/development"
-  >
-    Edit your docs locally and preview them in real time.
-  </Card>
-  <Card
-    title="Customize your site"
-    icon="palette"
-    href="/essentials/settings"
-  >
-    Customize the design and colors of your site to match your brand.
-  </Card>
-    <Card
-    title="Set up navigation"
-    icon="map"
-    href="/essentials/navigation"
-  >
-    Organize your docs to help users find what they need and succeed with your product.
-  </Card>
-  <Card
-    title="API documentation"
-    icon="terminal"
-    href="/api-reference/introduction"
-  >
-    Auto-generate API documentation from OpenAPI specifications.
-  </Card>
-</Columns>
+**Exercise:** create 3 variables (string, number, boolean) and log them.
 
-## Create beautiful pages
+---
 
-Everything you need to create world-class documentation.
+## 2. Types & Operators
 
-<Columns cols={2}>
-  <Card
-    title="Write with MDX"
-    icon="pen-fancy"
-    href="/essentials/markdown"
-  >
-    Use MDX to style your docs pages.
-  </Card>
-  <Card
-    title="Code samples"
-    icon="code"
-    href="/essentials/code"
-  >
-    Add sample code to demonstrate how to use your product.
-  </Card>
-  <Card
-    title="Images"
-    icon="image"
-    href="/essentials/images"
-  >
-    Display images and other media.
-  </Card>
-  <Card
-    title="Reusable snippets"
-    icon="recycle"
-    href="/essentials/reusable-snippets"
-  >
-    Write once and reuse across your docs.
-  </Card>
-</Columns>
+### Primitive types
 
-## Need inspiration?
+* `string`, `number`, `boolean`, `null`, `undefined`, `bigint`, `symbol`
 
-<Card
-  title="See complete examples"
-  icon="stars"
-  href="https://mintlify.com/customers"
->
-  Browse our showcase of exceptional documentation sites.
+```js
+typeof 42;          // "number"
+typeof 'hi';        // "string"
+```
+
+### Operators
+
+* Arithmetic: `+ - * / %`
+* Comparison: `== === != !== > <`
+* Logical: `&& || !`
+
+**Tip:** use `===` (strict equality) to avoid coercion surprises.
+
+---
+
+## 3. Control Flow
+
+### If / else
+
+```js
+const age = 18;
+if (age >= 18) {
+  console.log('Adult');
+} else {
+  console.log('Minor');
+}
+```
+
+### Loops
+
+```js
+for (let i = 0; i < 5; i++) console.log(i);
+let j = 0; while (j < 3) { console.log(j); j++; }
+```
+
+**Exercise:** write a loop that prints even numbers between 0 and 20.
+
+---
+
+## 4. Functions
+
+```js
+// function declaration
+function add(a, b) {
+  return a + b;
+}
+
+// arrow function
+const square = x => x * x;
+```
+
+**Exercise:** write a function `isPrime(n)` that returns true for prime numbers.
+
+---
+
+## 5. Objects & Arrays
+
+### Objects
+
+```js
+const person = {
+  name: 'Sara',
+  age: 25,
+  greet() { console.log('Hello ' + this.name); }
+};
+person.greet();
+```
+
+### Arrays
+
+```js
+const arr = [1, 2, 3];
+arr.push(4);
+arr.map(x => x * 2);
+```
+
+**Card — Common Array Methods**
+
+<Card title="Array helpers" icon="code" href="/basics/arrays">
+  `push`, `pop`, `shift`, `unshift`, `map`, `filter`, `reduce`, `find`, `forEach`.
 </Card>
+
+**Exercise:** given `const nums = [3,6,9,12]` produce a new array with each value divided by 3.
+
+---
+
+## 6. DOM & Events (Browser)
+
+```html
+<button id="btn">Click me</button>
+<script>
+  document.getElementById('btn').addEventListener('click', () => {
+    alert('Button clicked!');
+  });
+</script>
+```
+
+**Exercise:** change the button text to show how many times it was clicked.
+
+---
+
+## 7. Asynchronous JavaScript
+
+### Callback
+
+```js
+setTimeout(() => console.log('Later'), 1000);
+```
+
+### Promise
+
+```js
+fetch('/data.json')
+  .then(res => res.json())
+  .then(data => console.log(data))
+  .catch(err => console.error(err));
+```
+
+### Async / Await
+
+```js
+async function load() {
+  try {
+    const res = await fetch('/data.json');
+    const json = await res.json();
+    console.log(json);
+  } catch (e) {
+    console.error(e);
+  }
+}
+```
+
+**Exercise:** write `async` function that waits 2 seconds then returns "done".
+
+---
+
+## 8. ES6+ Features to know
+
+* `let` / `const`
+* Arrow functions
+* Template literals: `` `Hello ${name}` ``
+* Destructuring (objects & arrays)
+* Spread / rest `...`
+* Modules: `export` / `import`
+
+**Example — destructuring**
+
+```js
+const [a, b] = [10, 20];
+const {name, age} = person;
+```
+
+---
+
+## 9. Modules & Tooling
+
+* Use `import` / `export` for modular code.
+* Tools: Node.js, npm, bundlers (Vite/Rollup/Webpack), and ESLint/Prettier for style.
+
+**Quick start**: `npm init -y` → `npm i vite --save-dev` → `npx vite` to run a local dev server.
+
+---
+
+## 10. Mini Projects & Exercises
+
+<Card title="Projects" icon="rocket" href="/projects">
+  - Todo list (DOM + localStorage)
+  - Weather app (fetch API)
+  - Quiz game (timers + events)
+</Card>
+
+**Challenge:** build a small todo app. Use modules, persist to `localStorage`, and style simple UI.
+
+---
+
+## 11. Cheatsheet
+
+* `console.log()` debug
+* `typeof x` check type
+* `Array.prototype.map()` transform arrays
+* `async/await` for promises
+
+---
+
+## 12. Resources & Next steps
+
+* MDN JavaScript Guide
+* JavaScript.info
+* FreeCodeCamp interactive lessons
+
+---
+
+## 13. Exercises & Answers (hidden)
+
+Provide solution files as separate pages (answers hidden by default, revealed after attempt).
+
+---
+
+<Card title="Start learning" icon="book" href="/getting-started">
+  Follow sections in order: Basics → Functions → Objects → DOM → Async → Projects.
+</Card>
+
+<footer>
+  © Dexiter — JavaScript Basics
+</footer>
